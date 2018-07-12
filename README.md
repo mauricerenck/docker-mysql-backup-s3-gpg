@@ -69,3 +69,7 @@ This docker image backup and encrypt MySQL databases to S3/Minio periodically.
   the default value is `-%Y%m%d-%H%M.sql.gz.gpg`, please see the strftime(3) manual page
 - `MYSQL_DATABASE`
   the database name to dump. Default is to backup all databases
+
+## Decrypt
+
+gpg --compress-algo zlib --output backup.sql --decrypt filename.sql.gz.gpg
