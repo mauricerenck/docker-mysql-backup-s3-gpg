@@ -21,6 +21,11 @@ export MYSQL_USER MYSQL_PASSWORD
 
 while ! gpg --list-key "${PGP_KEY}"; do
      gpg --import /tmp/public.key
+     echo "$( \
+  gpg --list-keys --fingerprint \
+  | grep ${PGP_KEY} -A 1 | tail -1 \
+  | tr -d '[:space:]' | awk 'BEGIN { FS = "=" } ; { print $2 }' \
+):6:" | gpg --import-ownertrust;
 #    gpg --keyserver "${PGP_KEYSERVER}" --recv-keys "${PGP_KEY}" && break;
 #    echo "Error in retriving PGP key ${PGP_KEY}, retry in 5 seconds ..."
     sleep 5
