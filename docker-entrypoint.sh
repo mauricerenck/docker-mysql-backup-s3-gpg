@@ -31,7 +31,7 @@ while ! gpg --list-key "${PGP_KEY}"; do
     sleep 5
 done
 
-#echo trusted-key "${PGP_KEY}" >> "$HOME/.gnupg/gpg.conf"
+echo trusted-key "${PGP_KEY}" >> "$HOME/.gnupg/gpg.conf"
 
 
 
