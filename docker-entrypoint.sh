@@ -20,12 +20,15 @@ echo "MySQL host: ${MYSQL_HOST:-localhost}, user: ${MYSQL_USER:=root}"
 export MYSQL_USER MYSQL_PASSWORD
 
 while ! gpg --list-key "${PGP_KEY}"; do
-    gpg --keyserver "${PGP_KEYSERVER}" --recv-keys "${PGP_KEY}" && break;
-    echo "Error in retriving PGP key ${PGP_KEY}, retry in 5 seconds ..."
+     gpg --import /tmp/public.key
+#    gpg --keyserver "${PGP_KEYSERVER}" --recv-keys "${PGP_KEY}" && break;
+#    echo "Error in retriving PGP key ${PGP_KEY}, retry in 5 seconds ..."
     sleep 5
 done
 
-echo trusted-key "${PGP_KEY}" >> "$HOME/.gnupg/gpg.conf"
+#echo trusted-key "${PGP_KEY}" >> "$HOME/.gnupg/gpg.conf"
+
+
 
 export -p | grep '\(AWS\|BACKUP\|PGP\|MYSQL\|DEBUG\|TZ\)' > /etc/profile.d/s3.sh
 
