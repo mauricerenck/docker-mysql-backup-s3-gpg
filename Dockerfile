@@ -16,7 +16,7 @@ RUN pip install --upgrade setuptools
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-           cron gpgv2 python python-pip \
+           cron gpgv2 python python-setuptools python-pip \
     && pip install awscli \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
