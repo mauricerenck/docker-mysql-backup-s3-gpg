@@ -12,6 +12,7 @@ ENV AWS_ACCESS_KEY_ID="" \
     PGP_KEYSERVER="hkp://keys.gnupg.net"
 
 #   MYSQL_HOST MYSQL_ROOT_PASSWORD MYSQL_USER MYSQL_PASSWORD MYSQL_DATABASE
+RUN pip install --upgrade setuptools
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
